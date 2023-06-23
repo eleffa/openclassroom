@@ -1,4 +1,32 @@
 import streamlit as st
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tag.perceptron import PerceptronTagger
+from sklearn.feature_extraction.text import  TfidfVectorizer
+from bs4 import BeautifulSoup
+from collections import defaultdict
+import numpy as np
+import matplotlib.pyplot as plt
+import string
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+import re
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('brown')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
+lm = WordNetLemmatizer()
+lemmatizer = WordNetLemmatizer()
+wordnet_map = {"N":wordnet.NOUN, "V":wordnet.VERB, "J":wordnet.ADJ, "R":wordnet.ADV}
+
+
 def message_cleaning(message):
     Test_punc_removed = [char for char in message if char not in string.punctuation]
     Test_punc_removed_join = ''.join(Test_punc_removed)
