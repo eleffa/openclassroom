@@ -1,7 +1,6 @@
 import streamlit as st
 import joblib
 
-model_tfidf = joblib.load('tfidf_model.bkl')
 model_classification = joblib.load('tag_classification.bkl')
 indice = joblib.load('list_indice.bkl')
 title = joblib.load('list_title.bkl')
