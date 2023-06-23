@@ -1,9 +1,9 @@
 import streamlit as st
 #import joblib
 
-model_tfidf = joblib.load('tfidf_model.bkl')
-model_classification = joblib.load('tag_classification.bkl')
-tag_label = joblib.load('multilabel_binarizer.bkl')
+#model_tfidf = joblib.load('tfidf_model.bkl')
+#model_classification = joblib.load('tag_classification.bkl')
+#tag_label = joblib.load('multilabel_binarizer.bkl')
 
 # Header of tag Prediction
 html_temp="""<div style="background-color:#F5F5F5"> <h1 style="color:#31333F;text-align:center;"> Customer Satisfaction Prediction </h1></div>"""
