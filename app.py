@@ -25,4 +25,4 @@ res = tag_label.inverse_transform(res)
 
 st.success(f'Document Title is {title}')
 st.success(f'Document Tags are {tags}')
-st.success(f'The predict's tags list is {res}')
+st.success(f'The predict s tags list is {res}')
