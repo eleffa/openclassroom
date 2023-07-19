@@ -10,7 +10,7 @@ from nltk.stem.porter import PorterStemmer
 import pickle
 
 
-vectorizer = joblib.load('tfidf_model.bkl')
+vectorizer = joblib.load('tf_model.bkl')
 xgb = joblib.load('tag_classification.bkl')
 multilabel_binarizer = joblib.load('multilabel_binarizer.bkl')
 
