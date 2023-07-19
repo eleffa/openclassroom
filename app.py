@@ -9,9 +9,9 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer 
 import pickle
 
-file = open('tag_classification.pyc', 'rb')
-xgb = pickle.load(file)
-file.close()
+#file = open('tag_classification.pyc', 'rb')
+#xgb = pickle.load(file)
+#file.close()
 
 file = open('multilabel_binarizer.pyc', 'rb')
 multilabel_binarizer = pickle.load(file)
