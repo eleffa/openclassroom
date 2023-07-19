@@ -54,7 +54,7 @@ if text_input:
   #vectorize the cleaned text
   review_vectorized = vectorizer.transform([review_cleaned]).toarray()
   #predict tags
-  y_pred = xgb.predict(review_vectorized).toarray()
+  y_pred = xgb.predict(review_vectorized)
 
   #get the tags in text form
   tags_pred = multilabel_binarizer.inverse_transform(y_pred)
