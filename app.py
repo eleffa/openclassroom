@@ -7,6 +7,7 @@ import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords    
 from nltk.stem.porter import PorterStemmer 
+from sklearn.linear_model import LogisticRegression
 import pickle
 
 file = open('tag_classification.pyc', 'rb')
