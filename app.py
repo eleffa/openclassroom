@@ -7,11 +7,21 @@ import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords    
 from nltk.stem.porter import PorterStemmer 
+import pickle
+
+file = open('tag_classification.pyc', 'rb')
+xgb = pickle.load(file)
+file.close()
+
+file = open('multilabel_binarizer.pyc', 'rb')
+multilabel_binarizer = pickle.load(file)
+file.close()
+
+file = open('vectorizer.pyc', 'rb')
+vectorizer = pickle.load(file)
+file.close()
 
 
-vectorizer = joblib.load('tfidf_model.bkl')
-xgb = joblib.load('tag_classification.bkl')
-multilabel_binarizer = joblib.load('multilabel_binarizer.bkl')
 
 #defining the funtion that will be used to create the dictionnary
 def review_to_words( raw_review ):
