@@ -11,7 +11,7 @@ import pickle
 
 
 vectorizer = joblib.load('tf_model.bkl')
-xgb = joblib.load('tag_classification.bkl')
+xgb = joblib.load('model.bkl')
 multilabel_binarizer = joblib.load('multilabel_binarizer.bkl')
 
 
