@@ -12,7 +12,7 @@ import pickle
 
 vectorizer = joblib.load('tf_model.bkl')
 xgb = joblib.load('tag_classification.bkl')
-multilabel_binarizer = joblib.load('multilabel_binarizer.bkl')
+multilabel_binarizer = joblib.load('multilabel_binarizer.pyc')
 
 
 #defining the funtion that will be used to create the dictionnary
