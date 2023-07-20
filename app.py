@@ -66,5 +66,11 @@ if text_input:
     j = random.randint(0,150)
     ind_g.append(j)
 
+  ind_g = []
+  for i in range(0,5):
+    j = random.randint(0,150)
+    ind_g.append(j)
+  
+  res = np.array(tags_pred)[0][ind_g]
     
-  st.success(f'The predict s tags list is {tags_pred}')
+  st.success(f'The predict s tags list is {res}')
