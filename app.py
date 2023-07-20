@@ -8,14 +8,12 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords    
 from nltk.stem.porter import PorterStemmer 
 import pickle
-
+import random
 
 vectorizer = joblib.load('tf_model.bkl')
 xgb = joblib.load('tag_classification.bkl')
-#multilabel_binarizer = joblib.load('multilabel_binarizer.pyc')
-file = open('multilabel_binarizer.pyc', 'rb')
-multilabel_binarizer = pickle.load(file)
-file.close()
+multilabel_binarizer = joblib.load('multilabel_binarizer.bkl')
+
 
 
 #defining the funtion that will be used to create the dictionnary
@@ -63,5 +61,10 @@ if text_input:
 
   #get the tags in text form
   tags_pred = multilabel_binarizer.inverse_transform(y_pred)
+  ind_g = []
+  for i in range(0,5):
+    j = random.randint(0,150)
+    ind_g.append(j)
 
+    
   st.success(f'The predict s tags list is {tags_pred}')
