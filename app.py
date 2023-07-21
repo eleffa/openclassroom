@@ -9,10 +9,19 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer 
 import pickle
 import random
+import gensim
+import gensim.corpora as corpora
+from gensim import models
+from gensim.utils import simple_preprocess
+from gensim.models.ldamulticore import LdaMulticore
+from gensim.models import CoherenceModel
 
 vectorizer = joblib.load('tf_model.bkl')
 xgb = joblib.load('tag_classification.bkl')
 multilabel_binarizer = joblib.load('multilabel_binarizer.bkl')
+
+dictionary = joblib.load('dictionary.bkl')
+model = joblib.load('lda_model.bkl')
 
 
 
@@ -59,7 +68,7 @@ if text_input:
   #predict tags
   y_pred = xgb.predict(review_vectorized)
 
-  #get the tags in text form
+   #get the tags in text form
   tags_pred = multilabel_binarizer.inverse_transform(y_pred)
   ind_g = []
   for i in range(0,5):
@@ -74,3 +83,21 @@ if text_input:
   res = np.array(tags_pred)[0][ind_g]
     
   st.success(f'The predict s tags list is {res}')
+
+  corpus_new = dictionary.doc2bow(text)
+  topics = model.get_document_topics(corpus_new)
+        
+  #find most relevant topic according to probability
+  relevant_topic = topics[0][0]
+  relevant_topic_prob = topics[0][1]
+        
+  for i in range(len(topics)):
+      if topics[i][1] > relevant_topic_prob:
+          relevant_topic = topics[i][0]
+          relevant_topic_prob = topics[i][1]
+                
+  #retrieve associated to topic tags present in submited text
+  res1 = model.get_topic_terms(topicid=relevant_topic, topn=5)    
+  res1 = [dictionary[tag[0]] for tag in res1 if dictionary[tag[0]] in text]
+
+  st.success(f'The predict s tags list is {res1}')
