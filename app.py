@@ -100,4 +100,4 @@ if text_input:
   res1 = model.get_topic_terms(topicid=relevant_topic, topn=5)    
   res1 = [dictionary[tag[0]] for tag in res1 if dictionary[tag[0]] in text]
 
-  st.success(f'The predict s tags list is {res1}')
+  #st.success(f'The predict s tags list is {res1}')
