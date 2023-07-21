@@ -53,7 +53,7 @@ def review_to_words( raw_review ):
     #
     # 7. Join the words back into one string separated by space, 
     # and return the result.
-    return( " ".join( meaningful_words )) 
+    return ( " ".join( meaningful_words )),  meaningful_words
 
 # Header of tag Prediction
 html_temp="""<div style="background-color:#F5F5F5"> <h1 style="color:#31333F;text-align:center;">Tag Prediction </h1></div>"""
@@ -62,7 +62,7 @@ text_input = st.text_input( "Entrer votre texte ici 👇" )
 
 if text_input:
   #st.write("You entered: ", text_input)
-  review_cleaned = review_to_words(text_input)
+  review_cleaned, text = review_to_words(text_input)
   #vectorize the cleaned text
   review_vectorized = vectorizer.transform([review_cleaned]).toarray()
   #predict tags
@@ -84,7 +84,7 @@ if text_input:
     
   st.success(f'The predict s tags list is {res}')
 
-  corpus_new = dictionary.doc2bow(review_cleaned)
+  corpus_new = dictionary.doc2bow(text)
   topics = model.get_document_topics(corpus_new)
         
   #find most relevant topic according to probability
@@ -98,6 +98,6 @@ if text_input:
                 
   #retrieve associated to topic tags present in submited text
   res1 = model.get_topic_terms(topicid=relevant_topic, topn=5)    
-  res1 = [dictionary[tag[0]] for tag in res1 if dictionary[tag[0]] in review_cleaned]
+  res1 = [dictionary[tag[0]] for tag in res1 if dictionary[tag[0]] in text]
 
   st.success(f'The predict s tags list is {res1}')
