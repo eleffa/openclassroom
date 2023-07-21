@@ -20,8 +20,8 @@ vectorizer = joblib.load('tf_model.bkl')
 xgb = joblib.load('tag_classification.bkl')
 multilabel_binarizer = joblib.load('multilabel_binarizer.bkl')
 
-dictionary = joblib.load('dictionary.bkl')
-model = joblib.load('lda_model.bkl')
+dictionary = joblib.load('dictionary.pkl')
+model = joblib.load('lda_model.pkl')
 
 
 
