@@ -84,7 +84,7 @@ if text_input:
     
   st.success(f'The predict s tags list is {res}')
 
-  corpus_new = dictionary.doc2bow(text)
+  corpus_new = dictionary.doc2bow(review_cleaned)
   topics = model.get_document_topics(corpus_new)
         
   #find most relevant topic according to probability
@@ -98,6 +98,6 @@ if text_input:
                 
   #retrieve associated to topic tags present in submited text
   res1 = model.get_topic_terms(topicid=relevant_topic, topn=5)    
-  res1 = [dictionary[tag[0]] for tag in res1 if dictionary[tag[0]] in text]
+  res1 = [dictionary[tag[0]] for tag in res1 if dictionary[tag[0]] in review_cleaned]
 
   st.success(f'The predict s tags list is {res1}')
